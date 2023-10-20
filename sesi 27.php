@@ -31,7 +31,7 @@
         <th>Kelas</th>
     </tr>
     <?php
-    for ($i = 1; $i <= 9; $i++) {
+    for ($i = 1; $i <= 10; $i++) {
         echo "<tr>";
         echo "<td>$i</td>";
         echo "<td>Nama ke $i</td>";
@@ -45,7 +45,7 @@
 echo "<br>";
 
 /* Melakukan looping untuk menampilkan pola angka 0-8 membentuk segitiga*/
-for ($i = 0; $i <= 9; $i++) {
+for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j <= $i; $j++) {
         echo $j;
     }
