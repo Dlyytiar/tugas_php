@@ -15,7 +15,7 @@
             color: black;
         }
         tr:nth-child(even) {
-            background-color: #ccc; /*Warna abu-abu untuk baris genap */
+            background-color: #ccc; /* Warna abu-abu  untuk baris genap */
         }
         tr:nth-child(odd) {
             background-color: white; /* Warna putih untuk baris ganjil */
@@ -44,7 +44,7 @@
 <?php
 echo "<br>";
 
-/* Melakukan looping untuk menampilkan pola angka 0-8 membentuk segitiga*/
+// Melakukan looping untuk menampilkan pola angka
 for ($i = 0; $i < 9; $i++) {
     for ($j = 0; $j <= $i; $j++) {
         echo $j;
