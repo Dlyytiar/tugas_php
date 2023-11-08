@@ -11,8 +11,8 @@ $result = mysqli_query($koneksi, $sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Daftar Pengarang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Pengarang</title>
     <style>
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: #f2f2f2;
@@ -21,7 +21,7 @@ $result = mysqli_query($koneksi, $sql);
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="pengarang.php">Pengarang</a>
+        <a class="navbar-brand" href="Pengarang.php">Pengarang</a>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Anggota</a>
@@ -42,19 +42,24 @@ $result = mysqli_query($koneksi, $sql);
                     <th>Email</th>
                     <th>Telp</th>
                     <th>Alamat</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id_pengarang'] . "</td>";
-                    echo "<td>" . $row['nama_pengarang'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
-                    echo "<td>" . $row['telp'] . "</td>";
-                    echo "<td>" . $row['alamat'] . "</td>";
-                    echo "</tr>";
-                }
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<tr>";
+                        echo "<td>" . $row['id_pengarang'] . "</td>";
+                        echo "<td>" . $row['nama_pengarang'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['telp'] . "</td>";
+                        echo "<td>" . $row['alamat'] . "</td>";
+                        echo "<td>
+                            <a href='edit/editpengarang.php?id=" . $row['id_pengarang'] . "&nama_pengarang=" . urlencode($row['nama_pengarang']) . "&email=" . urlencode($row['email']) . "&telp=" . $row['telp'] . "&alamat=" . urlencode($row['alamat']) . "' class='btn btn-warning btn-sm'>Edit</a>
+                            <a href='config/delete_pengarang.php?id=" . $row['id_pengarang'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data?\")'>Delete</a>
+                        </td>";
+                        echo "</tr>";
+                    }
                 ?>
             </tbody>
         </table>
